@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
+import styles from '../css/Home.module.css';
 
 const Home = () => {
   const [downCounterValue, setDownCounterValue] = useState('');
@@ -59,24 +60,27 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.header}>
         <h1>Welcome to our app</h1>
         <h3>Please, download your table</h3>
       </div>
       <form onSubmit={onSubmitHandler}>
-        <input
-          name="tableData"
-          type="file"
-          onChange={(e) => onChangeInputFile(e)}
-        ></input>
-        <input
-          onChange={onChangeHandler}
-          id="downCounterInput"
-          type="text"
-          value={downCounterValue}
-        ></input>
-        <button type="submit">Submit</button>
+        <div className={styles.form}>
+          <input
+            name="tableData"
+            type="file"
+            onChange={(e) => onChangeInputFile(e)}
+          ></input>
+          <input
+            onChange={onChangeHandler}
+            id="downCounterInput"
+            placeholder="M:S"
+            type="text"
+            value={downCounterValue}
+          ></input>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );

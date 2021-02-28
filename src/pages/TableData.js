@@ -1,8 +1,9 @@
 import React from 'react';
-
+import styles from '../css/TableData.module.css';
 import Timer from '../components/Timer';
+const shortid = require('shortid');
 
-const TableData = (props) => {
+const TableData = () => {
   const getData = () => {
     try {
       const data = localStorage.getItem('inputTableData');
@@ -17,27 +18,22 @@ const TableData = (props) => {
     <div>
       <Timer />
       <div>
-        <table className="table">
+        <table className={styles.minimalistBlack}>
           <thead>
-            <tr>
-              <th>Brand</th>
-              <th>Color</th>
-              <th>Item</th>
-              <th>Date</th>
+            <tr key={shortid.generate()}>
+              <th scope="col">Brand</th>
+              <th scope="col">Color</th>
+              <th scope="col">Item</th>
+              <th scope="col">Date</th>
             </tr>
           </thead>
           <tbody>
             {getData().map((item) => (
-              <tr key={item.Name}>
-                
-                  <th scope="row">{item.Brand}</th>
-                
-
-                <th scope="row">{item.Color}</th>
-                <th scope="row">{item.Name}</th>
-                <tr key={item.createDate}>
-                  <th>{item.createDate}</th>
-                </tr>
+              <tr key={shortid.generate()}>
+                <th>{item.Brand}</th>
+                <th>{item.Color}</th>
+                <th>{item.Name}</th>
+                <th>{item.createDate}</th>
               </tr>
             ))}
           </tbody>

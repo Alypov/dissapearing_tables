@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from '../css/Timer.module.css';
 
 const Timer = () => {
   const inputTime = localStorage.getItem('inputTimeData').trim();
@@ -15,7 +16,6 @@ const Timer = () => {
       if (seconds >= 1) {
         setSeconds(seconds - 1);
         clearInterval(interval);
-        console.log(seconds);
       }
       if (seconds === 0) {
         setSeconds(59);
@@ -38,7 +38,7 @@ const Timer = () => {
   });
 
   return (
-    <div>
+    <div className={styles.container}>
       {seconds <= 0 && minutes <= 0 ? (
         <div>Time is over</div>
       ) : (
